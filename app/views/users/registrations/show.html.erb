@@ -1,0 +1,14 @@
+<h1>Hello</h1>
+
+<% if current_user.admin? %>
+    <%= link_to 'Admin Panel', rails_admin.dashboard_path
+ %><br>
+<% end %>
+
+<%= image_tag @user.avatar.url(:medium) %><br>
+First name: <%= @user.first_name %> <br>
+Last name: <%= @user.last_name %><br>
+Email: <%= @user.email %> <br>
+About me: <%= @user.about_me %><br>
+
+<%= link_to 'Edit User', edit_user_registration_path %><br>

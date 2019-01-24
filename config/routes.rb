@@ -1,3 +1,21 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    passwords: 'users/passwords',
+    registrations: 'users/registrations',
+    confirmations: 'users/confirmations'
+  }
+
+  resources :users
+
+  devise_scope :user do
+    authenticated :user do
+      root 'users/registrations#show', as: :authenticated_root
+    end
+
+    unauthenticated do
+      root 'users/sessions#new', as: :unauthenticated_root
+    end
+  end
 end
