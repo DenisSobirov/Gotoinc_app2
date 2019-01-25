@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
       reset_session
       redirect_to :action => 'new', :controller => 'users/sessions'
       flash.alert = "Your account is locked. A message has been sent to your email."
-      
+      BlockUserEmailMailer.block_user(@user).deliver_now
     end
   end
 end
