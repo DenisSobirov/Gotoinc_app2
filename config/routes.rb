@@ -7,14 +7,18 @@ Rails.application.routes.draw do
     confirmations: 'users/confirmations'
   }
 
+  resources :links
+  devise_scope :user do
+    get 'profile', to: 'users/registrations#show'
+  end
 
   devise_scope :user do
     authenticated :user do
-      root :to => 'users/registrations#show', as: :authenticated_root
+      root :to => 'links#index', as: :authenticated_root
     end
 
     unauthenticated do
-      root 'users/sessions#new', as: :unauthenticated_root
+      root 'links#index', as: :unauthenticated_root
     end
   end
 end
