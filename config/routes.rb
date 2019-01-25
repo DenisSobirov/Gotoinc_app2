@@ -7,7 +7,6 @@ Rails.application.routes.draw do
     confirmations: 'users/confirmations'
   }
 
-  resources :users
 
   devise_scope :user do
     authenticated :user do
