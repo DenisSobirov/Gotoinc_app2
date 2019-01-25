@@ -3,6 +3,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  before_action :user_is_block?, :only => [:show, :edit, :update, :destoy]
 
   # GET /resource/sign_up
   # def new
@@ -48,6 +49,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def user_params
     params.require(:user).permit(:first_name, :last_name, :avatar, :about_me)
   end
+
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
