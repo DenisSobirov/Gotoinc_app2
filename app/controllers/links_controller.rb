@@ -1,5 +1,4 @@
 class LinksController < ApplicationController
-  before_action :user_is_block?, :only => [ :show, :index, :edit, :update, :destoy ]
 
   def index
     @links = Link.all
@@ -10,7 +9,7 @@ class LinksController < ApplicationController
   end
 
   def new
-    @link = Link.new(link_params)
+    @link = Link.new
   end
 
   def create
@@ -29,6 +28,6 @@ class LinksController < ApplicationController
   private
 
   def link_params
-    params.require(:person).permit(:id, :link, :title)
+    params.require(:link).permit(:link, :title, :id)
   end
 end

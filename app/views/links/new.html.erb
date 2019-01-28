@@ -1,0 +1,18 @@
+<h2>Create new link</h2>
+
+<%= form_for :link  do |f| %>
+
+  <div class="field">
+    <%= f.label :link %><br />
+    <%= f.email_field :link %>
+  </div>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.password_field :title %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Create" %>
+  </div>
+<% end %>

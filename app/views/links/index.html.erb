@@ -1,5 +1,7 @@
-Hello
-
+This is links <br>
+<%= link_to "Create new link",  new_link_path %><br>
 <% @links.each do |link| %>
-<%= link.link %>
+<%= link.link %><br>
+<%= link.title %><br>
+<%= link_to "Show Link", link_path(link) %>
 <% end %>
