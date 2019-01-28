@@ -13,8 +13,9 @@ class LinksController < ApplicationController
   end
 
   def create
-    @link = Link.new
-    @link = Link.save!(link_params)
+    @link = Link.new(link_params)
+    @link.save
+    redirect_to @link
   end
 
   def update
@@ -28,6 +29,6 @@ class LinksController < ApplicationController
   private
 
   def link_params
-    params.require(:link).permit(:link, :title, :id)
+    params.require(:link).permit(:link, :title, :id, :user_id)
   end
 end
