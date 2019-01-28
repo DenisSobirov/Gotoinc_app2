@@ -10,14 +10,22 @@
 
   <body>
 
+    <%= link_to 'Links', links_path %>
     <% if user_signed_in? %>
         <%= link_to 'Sign Out', destroy_user_session_path, :method => :delete, class: "btn btn-primary float-right" %>
         <%= link_to 'User profile', profile_path, class: "btn btn-primary float-right" %>
-        <%= link_to "Create new link",  new_link_path %><br>
+
       <% else %>
         <%= link_to 'Sign In', new_user_session_path, class: "btn btn-primary float-right" %>
         <%= link_to 'Sign Up', new_user_registration_path, class: "btn btn-primary float-right" %>
       <% end %>
+
+      <% if user_signed_in? %>
+        <%= link_to "Create new link",  new_link_path %>
+      <% else %>
+          <%= link_to "Create new link",  new_user_session_path %>
+      <% end %>
+
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>

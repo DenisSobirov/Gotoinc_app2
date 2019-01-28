@@ -1,4 +1,5 @@
 class LinksController < ApplicationController
+  before_action :user_is_block?,  only: [:create, :update, :edit, :destroy]
 
   def index
     @links = Link.all
@@ -14,6 +15,7 @@ class LinksController < ApplicationController
 
   def create
     @link = Link.new(link_params)
+    @link.user_id = current_user.id
     @link.save
     redirect_to @link
   end
@@ -23,7 +25,13 @@ class LinksController < ApplicationController
     @link.update!(link_params)
   end
 
+  def edit
+
+  end
+
   def destroy
+    @link = Link.find(params[:id]).destroy
+    redirect_to :action => 'index', :controller => 'links'
   end
 
   private
