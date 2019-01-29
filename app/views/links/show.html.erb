@@ -8,5 +8,6 @@ Link: <%= @link.link %>
 <% if user_signed_in? %>
   <% if current_user == @link.user || current_user.admin == true %>
     <br><%= link_to "Delete", link_path, :method => :delete %>
+    <br><%= link_to "Edit", edit_link_path %>
   <% end %>
 <% end %>

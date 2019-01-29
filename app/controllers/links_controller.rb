@@ -23,10 +23,11 @@ class LinksController < ApplicationController
   def update
     @link = Link.find(params[:id])
     @link.update!(link_params)
+    redirect_to @link
   end
 
   def edit
-
+    @link = Link.find(params[:id])
   end
 
   def destroy
