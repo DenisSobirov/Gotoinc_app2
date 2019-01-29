@@ -28,6 +28,30 @@
     <%= f.text_field :about_me %>
   </div>
 
+  <%= f.fields_for :address do |ff| %>
+
+    <div class="field">
+      <%= ff.label :country %><br />
+      <%= ff.text_field :country %>
+    </div>
+
+    <div class="field">
+      <%= ff.label :city %><br />
+      <%= ff.text_field :city %>
+    </div>
+
+    <div class="field">
+      <%= ff.label :street %><br />
+      <%= ff.text_field :street %>
+    </div>
+
+    <div class="field">
+      <%= ff.label :home_number %><br />
+      <%= ff.text_field :home_number %>
+    </div>
+
+  <% end %>
+
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
