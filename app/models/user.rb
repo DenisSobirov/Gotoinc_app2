@@ -8,8 +8,11 @@ class User < ApplicationRecord
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
   has_many :links
-  has_one :address
+  has_one :address, :dependent => :destroy
   has_many :professions
-  accepts_nested_attributes_for :address
-  accepts_nested_attributes_for :professions
+
+  accepts_nested_attributes_for :address, :allow_destroy => true
+  after_initialize do
+   self.address ||= self.build_address
+ end
 end

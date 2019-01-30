@@ -1,6 +1,7 @@
 <h1><%= @link.title %></h1>
 
-author: <%= @link.user.email %><br>
+author: <%= @link.user.first_name %>
+        <%= @link.user.last_name %><br>
 Link: <%= @link.link %>
 
 <br><%= link_to "Back", links_path %>

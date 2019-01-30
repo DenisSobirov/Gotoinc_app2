@@ -35,6 +35,7 @@ gem 'rails_admin'
 gem 'bootstrap', '~> 4.2.1'
 gem 'jquery-rails'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
+gem 'uikit-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

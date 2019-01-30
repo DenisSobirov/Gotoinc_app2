@@ -27,27 +27,27 @@
     <%= f.label :about_me %><br />
     <%= f.text_field :about_me %>
   </div>
-
-  <%= f.fields_for :address do |ff| %>
+  
+  <%= f.fields_for :address do |f2| %>
 
     <div class="field">
-      <%= ff.label :country %><br />
-      <%= ff.text_field :country %>
+      <%= f2.label :country %><br />
+      <%= f2.text_field :country %>
     </div>
 
     <div class="field">
-      <%= ff.label :city %><br />
-      <%= ff.text_field :city %>
+      <%= f2.label :city %><br />
+      <%= f2.text_field :city %>
     </div>
 
     <div class="field">
-      <%= ff.label :street %><br />
-      <%= ff.text_field :street %>
+      <%= f2.label :street %><br />
+      <%= f2.text_field :street %>
     </div>
 
     <div class="field">
-      <%= ff.label :home_number %><br />
-      <%= ff.text_field :home_number %>
+      <%= f2.label :home_number %><br />
+      <%= f2.text_field :home_number %>
     </div>
 
   <% end %>

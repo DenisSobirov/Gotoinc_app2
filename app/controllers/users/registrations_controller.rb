@@ -7,24 +7,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   # def new
-  #   super
+  #   @user = User.new
   # end
 
   def show
     @user = current_user
-    @user.address.build(user_params)
   end
 
   # POST /resource
-  def create
-    super &&
-    @user = User.create(user_params)
-  end
+  # def create
+  #   super &&
+  #   @user = User.create(user_params)
+  # end
 
   # GET /resource/edit
   def edit
     @user = current_user
-    # @user.address.build(user_params)
   end
 
   # PUT /resource
@@ -50,8 +48,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :avatar, :about_me,
-    address_attributes: [:country, :city, :street, :home_number])
+    params.require(:user).permit(:id, :first_name, :last_name, :email, :avatar, :about_me,
+       address_attributes: [:country, :city, :street, :home_number, :_destroy])
   end
 
   # protected

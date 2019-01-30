@@ -9,9 +9,9 @@
 First name: <%= @user.first_name %> <br>
 Last name: <%= @user.last_name %><br>
 Email: <%= @user.email %> <br>
-About me: <%= @user.address.country %><br>
-About me: <%= @user.address.city %><br>
-About me: <%= @user.address.street %><br>
-About me: <%= @user.address.home_number %><br>
+Country: <%= @user.address.country %><br>
+City: <%= @user.address.city %><br>
+Street: <%= @user.address.street %><br>
+Home number: <%= @user.address.home_number %><br>
 
 <%= link_to 'Edit User', edit_user_registration_path %>
