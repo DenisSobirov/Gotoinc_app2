@@ -32,7 +32,6 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem "paperclip", "~> 6.0.0"
 gem 'rails_admin'
-gem 'bootstrap', '~> 4.2.1'
 gem 'jquery-rails'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'uikit-rails'
