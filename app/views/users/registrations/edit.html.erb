@@ -27,9 +27,8 @@
     <%= f.label :about_me %><br />
     <%= f.text_field :about_me %>
   </div>
-  
-  <%= f.fields_for :address do |f2| %>
 
+  <%= f.fields_for :address do |f2| %>
     <div class="field">
       <%= f2.label :country %><br />
       <%= f2.text_field :country %>
@@ -49,8 +48,14 @@
       <%= f2.label :home_number %><br />
       <%= f2.text_field :home_number %>
     </div>
-
   <% end %>
+
+  <%= f.label :profession %><br />
+  <div class="field">
+    <%= f.fields_for :professions do |f2| %>
+      <%= f2.text_field :profession %><br>
+    <% end %>
+  </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
@@ -65,4 +70,4 @@
 
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
-<%= link_to "Back", :back %>
+<%= link_to "Back", profile_path %>

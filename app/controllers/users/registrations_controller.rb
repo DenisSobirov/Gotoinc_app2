@@ -8,6 +8,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # GET /resource/sign_up
   # def new
   #   @user = User.new
+  #   @user_profession = @user.professions.build(user_params[:professions_attributes])
   # end
 
   def show
@@ -33,9 +34,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # DELETE /resource
-  def destroy
-    super && current_user.links.destroy_all
-  end
+  # def destroy
+  #   super
+  # end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
@@ -49,7 +50,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def user_params
     params.require(:user).permit(:id, :first_name, :last_name, :email, :avatar, :about_me,
-       address_attributes: [:country, :city, :street, :home_number, :_destroy])
+       address_attributes: [:country, :city, :street, :home_number, :_destroy],
+       professions_attributes: [:id, :profession])
   end
 
   # protected

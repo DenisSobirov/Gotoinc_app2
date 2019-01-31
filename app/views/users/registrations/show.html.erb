@@ -13,5 +13,7 @@ Country: <%= @user.address.country %><br>
 City: <%= @user.address.city %><br>
 Street: <%= @user.address.street %><br>
 Home number: <%= @user.address.home_number %><br>
-
+Professions: <% @user.professions.each do |prof| %><br>
+              - <%= prof.profession %>
+             <% end %><br>
 <%= link_to 'Edit User', edit_user_registration_path %>
