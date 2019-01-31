@@ -3,55 +3,55 @@
 <%= form_for(resource, as: resource_name, url: user_registration_path(resource_name), html: { method: :put, multipar: true }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
+  <div>
     <%= f.label :avatar %><br />
     <%= f.file_field :avatar %>
   </div>
 
-  <div class="field">
+  <div>
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-  <div class="field">
+  <div>
     <%= f.label :first_name %><br />
     <%= f.text_field :first_name %>
   </div>
 
-  <div class="field">
+  <div>
     <%= f.label :last_name %><br />
     <%= f.text_field :last_name %>
   </div>
 
-  <div class="field">
+  <div>
     <%= f.label :about_me %><br />
     <%= f.text_field :about_me %>
   </div>
 
   <%= f.fields_for :address do |f2| %>
-    <div class="field">
+    <div>
       <%= f2.label :country %><br />
       <%= f2.text_field :country %>
     </div>
 
-    <div class="field">
+    <div>
       <%= f2.label :city %><br />
       <%= f2.text_field :city %>
     </div>
 
-    <div class="field">
+    <div>
       <%= f2.label :street %><br />
       <%= f2.text_field :street %>
     </div>
 
-    <div class="field">
+    <div>
       <%= f2.label :home_number %><br />
       <%= f2.text_field :home_number %>
     </div>
   <% end %>
 
   <%= f.label :profession %><br />
-  <div class="field">
+  <div>
     <%= f.fields_for :professions do |f2| %>
       <%= f2.text_field :profession %><br>
     <% end %>
@@ -61,7 +61,7 @@
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div class="actions">
+  <div>
     <%= f.submit "Update" %>
   </div>
 <% end %>
