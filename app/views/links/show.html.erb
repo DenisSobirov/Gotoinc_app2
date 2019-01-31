@@ -4,11 +4,11 @@ author: <%= @link.user.first_name %>
         <%= @link.user.last_name %><br>
 Link: <%= @link.link %>
 
-<br><%= link_to "Back", links_path %>
+<br><%= link_to "Back", links_path, class: "uk-button uk-button-default" %>
 
 <% if user_signed_in? %>
   <% if current_user == @link.user || current_user.admin == true %>
-    <br><%= link_to "Delete", link_path, :method => :delete %>
-    <br><%= link_to "Edit", edit_link_path %>
+    <%= link_to "Delete", link_path, :method => :delete, class: "uk-button uk-button-default" %>
+    <%= link_to "Edit", edit_link_path, class: "uk-button uk-button-default" %>
   <% end %>
 <% end %>

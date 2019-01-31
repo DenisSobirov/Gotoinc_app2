@@ -1,19 +1,21 @@
 <h1>Hello</h1>
 
 <% if current_user.admin? %>
-    <%= link_to 'Admin Panel', rails_admin.dashboard_path
- %><br>
+    <%= link_to 'Animal Planet', rails_admin.dashboard_path, class: "uk-button uk-button-default" %><br>
 <% end %>
 
 <%= image_tag @user.avatar.url(:medium) %><br>
-First name: <%= @user.first_name %> <br>
-Last name: <%= @user.last_name %><br>
-Email: <%= @user.email %> <br>
-Country: <%= @user.address.country %><br>
-City: <%= @user.address.city %><br>
-Street: <%= @user.address.street %><br>
-Home number: <%= @user.address.home_number %><br>
-Professions: <% @user.professions.each do |prof| %><br>
-              - <%= prof.profession %>
-             <% end %><br>
-<%= link_to 'Edit User', edit_user_registration_path %>
+<span class="uk-text-bold">First name:</span> <%= @user.first_name %>
+<span class="uk-text-bold">Last name:</span> <%= @user.last_name %><br>
+<span class="uk-text-bold">Email:</span><%= @user.email %><br>
+<span class="uk-text-bold">Country: </span><%= @user.address.country %><br>
+<span class="uk-text-bold">City:</span><%= @user.address.city %><br>
+<span class="uk-text-bold">Street:</span><%= @user.address.street %><br>
+<span class="uk-text-bold">Home number:</span><%= @user.address.home_number %><br>
+<span class="uk-text-bold">Professions:</span>
+<ul  class="uk-list uk-list-bullet">
+  <% @user.professions.each do |prof| %><br>
+    <li><%= prof.profession %></li>
+  <% end %><br>
+</ul>
+<%= link_to 'Edit User', edit_user_registration_path, class: "uk-button uk-button-default" %>

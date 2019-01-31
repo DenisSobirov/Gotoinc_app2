@@ -6,35 +6,28 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.3/css/uikit.min.css" />
+
+    <!-- UIkit JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.3/js/uikit.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.3/js/uikit-icons.min.js"></script>
   </head>
 
   <body>
-    <div>
-
-      <nav>
-        <%= link_to 'Links', links_path %>
-        <div>
-          <ul>
+    <div class="uk-container">
+      <nav class="uk-navbar-container uk-margin" uk-navbar="mode: click">
+        <div class="uk-navbar-left">
+          <ul class="uk-navbar-nav">
+            <li class="uk-navbar-nav"><%= link_to 'Links', links_path %></li>
             <% if user_signed_in? %>
-              <li>
-                <%= link_to 'Create new link', new_link_path %>
-              </li>
-              <li>
-                <%= link_to 'User profile', profile_path %>
-              </li>
-              <li>
-                <%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %>
-              </li>
+              <li class="uk-navbar-nav"><%= link_to 'Create new link', new_link_path %></li>
+              <li class="uk-navbar-nav"><%= link_to 'User profile', profile_path %></li>
+              <li class="uk-navbar-nav"><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %></li>
             <% else %>
-              <li>
-                <%= link_to 'Create new link', new_user_session_path %>
-              </li>
-              <li>
-                <%= link_to 'Sign In', new_user_session_path %>
-              </li>
-              <li>
-                <%= link_to 'Sign Up', new_user_registration_path %>
-              </li>
+              <li class="uk-navbar-nav"><%= link_to 'Create new link', new_user_session_path %></li>
+              <li class="uk-navbar-nav"><%= link_to 'Sign In', new_user_session_path %></li>
+              <li class="uk-navbar-nav"><%= link_to 'Sign Up', new_user_registration_path %></li>
             <% end %>
           </ul>
         </div>
