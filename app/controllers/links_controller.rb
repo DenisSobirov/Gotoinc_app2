@@ -16,8 +16,11 @@ class LinksController < ApplicationController
   def create
     @link = Link.new(link_params)
     @link.user_id = current_user.id
-    @link.save
-    redirect_to @link
+    if @link.save
+      redirect_to @link
+    else
+      render 'new'
+    end
   end
 
   def update

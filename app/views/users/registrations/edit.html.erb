@@ -50,12 +50,6 @@
     </div>
   <% end %>
 
-  <%= f.label :profession %><br />
-  <div>
-    <%= f.fields_for :professions do |f2| %>
-      <%= f2.text_field :profession %><br>
-    <% end %>
-  </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>

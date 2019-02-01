@@ -9,19 +9,11 @@ class User < ApplicationRecord
 
   has_many :links
   has_one :address, :dependent => :destroy
-  has_many :professions, :dependent => :destroy
-
+  has_and_belongs_to_many :professions
 
   accepts_nested_attributes_for :address, :allow_destroy => true
-  accepts_nested_attributes_for :professions, :allow_destroy => true
-
 
   after_initialize do
    self.address ||= self.build_address
-   self.professions ||= self.build_profession
-  end
-
-  def create_prof
-    self.build_profession
   end
 end

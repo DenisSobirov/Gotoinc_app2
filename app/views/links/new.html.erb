@@ -1,17 +1,16 @@
 <h2>Create new link</h2>
 
-<%= form_for(Link.new)  do |f| %>
+<%= render "shared/error_messages", :target => @link %>
 
+<%= form_for(@link)  do |f| %>
   <div>
-    <%= f.label :link %><br />
-    <%= f.text_field :link, class: "uk-input"%>
+    <%= f.label :link %>
+    <%= f.text_field :link %>
   </div>
-
   <div>
-    <%= f.label :title %><br />
+    <%= f.label :title %>
     <%= f.text_field :title %>
   </div>
-
   <div>
     <%= f.submit "Create" %>
   </div>
