@@ -50,7 +50,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def user_params
     params.require(:user).permit(:id, :first_name, :last_name, :email, :avatar, :about_me,
-       address_attributes: [:id, :country, :city, :street, :home_number, :_destroy])
+       address_attributes: [:id, :country, :city, :street, :home_number, :_destroy],
+       professions_attributes: [:id, :profession])
   end
 
   # protected

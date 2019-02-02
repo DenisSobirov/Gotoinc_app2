@@ -12,5 +12,10 @@
 <span class="uk-text-bold">City:</span><%= @user.address.city %><br>
 <span class="uk-text-bold">Street:</span><%= @user.address.street %><br>
 <span class="uk-text-bold">Home number:</span><%= @user.address.home_number %><br>
-
+<span class="uk-text-bold">Professions:</span>
+<ul  class="uk-list uk-list-bullet">
+  <% @user.professions.each do |prof| %><br>
+    <li><%= prof.profession %></li>
+  <% end %><br>
+</ul>
 <%= link_to 'Edit User', edit_user_registration_path, class: "uk-button uk-button-default" %>
