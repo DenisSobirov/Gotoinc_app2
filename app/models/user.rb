@@ -16,7 +16,6 @@ class User < ApplicationRecord
 
   after_initialize do
    self.address ||= self.build_address
-   self.professions ||= self.build_profession
   end
 
   def create_prof
