@@ -50,12 +50,9 @@
     </div>
   <% end %>
 
-  <%= f.label :profession %><br />
-  <div>
-    <%= f.fields_for :professions do |f2| %>
-      <%= f2.text_field :profession %><br>
-    <% end %>
-  </div>
+    <%= f.label :professions %><br />
+    <% professions_array = Profession.all.map { |pr| [pr.prof_name, pr.id] } %>
+    <%= f.select(:profession_ids, options_for_select(professions_array)) %><br>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>

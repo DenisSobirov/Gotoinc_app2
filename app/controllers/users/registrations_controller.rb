@@ -29,9 +29,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # PUT /resource
   def update
     @user = current_user
+    params[:user][:profession_ids] ||=[]
     @user.update!(user_params)
     redirect_to :action => 'show', :controller => 'users/registrations'
   end
+
 
   # DELETE /resource
   # def destroy
@@ -49,9 +51,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def user_params
-    params.require(:user).permit(:id, :first_name, :last_name, :email, :avatar, :about_me,
-       address_attributes: [:id, :country, :city, :street, :home_number, :_destroy])
+    params.require(:user).permit!
   end
+
+  # (:id, :first_name, :last_name, :email, :avatar, :about_me, :profession_ids => [], address_attributes: [:id, :country, :city, :street, :home_number, :_destroy])
 
   # protected
 
