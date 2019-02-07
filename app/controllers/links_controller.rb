@@ -32,8 +32,11 @@ class LinksController < ApplicationController
   end
 
   def update
-    @link.update!(link_params)
-    redirect_to @link
+    if @link.update(link_params)
+      redirect_to @link
+    else
+      render 'new'
+    end
   end
 
   def edit; end

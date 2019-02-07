@@ -1,7 +1,7 @@
 <h1 class="uk-heading-line uk-text-center"><span>This is links</span></h1>
 <div class="uk-child-width-1-1@s uk-text-center" uk-grid>
   <div>
-    <% @links.each do |link| %>
+    <% @links.order(created_at: :desc).each do |link| %>
       <div class="uk-background-default uk-padding uk-panel">
         <%= link.title %><br>
         <%= link.link %><br>
