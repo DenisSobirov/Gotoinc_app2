@@ -1,12 +1,20 @@
 class LinksController < ApplicationController
   before_action :user_is_block?,  only: [:create, :update, :edit, :destroy]
+  before_action :def_link, only: [:show, :edit, :update, :destroy]
 
   def index
     @links = Link.all
+    respond_to do |format|
+      format.html
+      format.json { render :json => @links }
+    end
   end
 
   def show
-    @link = Link.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.json { render :json => @link }
+    end
   end
 
   def new
@@ -24,21 +32,22 @@ class LinksController < ApplicationController
   end
 
   def update
-    @link = Link.find(params[:id])
     @link.update!(link_params)
     redirect_to @link
   end
 
-  def edit
-    @link = Link.find(params[:id])
-  end
+  def edit; end
 
   def destroy
-    @link = Link.find(params[:id]).destroy
+    @link.destroy
     redirect_to :action => 'index', :controller => 'links'
   end
 
   private
+
+  def def_link
+    @link = Link.find(params[:id])
+  end
 
   def link_params
     params.require(:link).permit(:link, :title, :id, :user_id)

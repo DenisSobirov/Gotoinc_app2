@@ -4,7 +4,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
   before_action :user_is_block?, :only => [:show, :edit, :update, :destoy]
-
+  before_action :define_user, only: [:show, :edit, :update]
   # GET /resource/sign_up
   # def new
   #   @user = User.new
@@ -12,7 +12,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   def show
-    @user = current_user
+    respond_to do |format|
+      format.html
+      format.json { render :json => @user }
+    end
   end
 
   # POST /resource
@@ -23,12 +26,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/edit
   def edit
-    @user = current_user
+    respond_to do |format|
+      format.html
+      format.json { render :json => @user }
+    end
   end
 
   # PUT /resource
   def update
-    @user = current_user
     @user.update!(user_params)
     redirect_to :action => 'show', :controller => 'users/registrations'
   end
@@ -48,6 +53,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
   private
+
+  def define_user
+    @user = current_user
+  end
 
   def user_params
     params.require(:user).permit(:id, :first_name, :last_name, :email, :avatar, :about_me, profession_ids: [])

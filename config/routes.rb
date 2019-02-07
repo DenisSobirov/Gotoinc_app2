@@ -6,7 +6,6 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     confirmations: 'users/confirmations'
   }
-
   resources :links
   devise_scope :user do
     get 'profile', to: 'users/registrations#show'
