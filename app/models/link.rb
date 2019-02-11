@@ -1,7 +1,6 @@
 class Link < ApplicationRecord
   validates :link, :title, presence: { message: 'Cant be blank' }
-  validates :link, url: true
-  # validates_format_of :link, with: , message: 'of video must be from resources only', multiline: true
+  validates_format_of :link, with: /^(?:https?:\/\/)?(?:www\.)?(m.)?youtu(?:\.be|be\.com)\/(?:watch\?)?(([\w-]{10,})|(v=[\w-]{10,}))/, message: 'of video must be from resources only', multiline: true
 
   belongs_to :user
 end

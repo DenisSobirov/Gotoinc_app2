@@ -23,6 +23,9 @@ class LinksController < ApplicationController
 
   def create
     @link = Link.new(link_params)
+    video = /(v=[\w-]{10,})|\/([\w-]{10,})/.match(@link.link).to_s
+    @link.video_id = /([\w-]{10,})/.match(video).to_s
+    @link.source = /(?:www\.)?youtu(?:\.be|be\.com)/.match(@link.link).to_s
     @link.user_id = current_user.id
     if @link.save
       redirect_to @link
@@ -33,6 +36,10 @@ class LinksController < ApplicationController
 
   def update
     if @link.update(link_params)
+      video = /(v=[\w-]{10,})|([\w-]{10,})/.match(@link.link).to_s
+      @link.video_id = /([\w-]{10,})/.match(video).to_s
+      @link.source = /(?:www\.)?youtu(?:\.be|be\.com)/.match(@link.link).to_s
+      @link.save
       redirect_to @link
     else
       render 'new'
@@ -51,6 +58,7 @@ class LinksController < ApplicationController
   def def_link
     @link = Link.find(params[:id])
   end
+
 
   def link_params
     params.require(:link).permit(:link, :title, :id, :user_id)
